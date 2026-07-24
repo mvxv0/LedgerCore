@@ -1,0 +1,33 @@
+## Build results
+bin/
+obj/
+out/
+
+## Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / VS Code 
+.idea/
+.vscode/
+
+## NuGet
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+## Test results
+[Tt]est[Rr]esult*/
+*.trx
+
+## appsettings
+appsettings.Development.json
+appsettings.Local.json
+
+## Other
+*.log
+.DS_Store
+Thumbs.db
