@@ -48,5 +48,11 @@ namespace LedgerCore.Application.Services
             var user = await _userRepository.GetByIdAsync(id);
             return user?.ToUserResponseDto();
         }
+
+        public async Task<IEnumerable<UserResponseDto>> GetAllAsync()
+        {
+            var users = await _userRepository.GetAllAsync();
+            return users.Select(u => u.ToUserResponseDto());
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace LedgerCore.Application.Interfaces
     {
         Task<UserResponseDto> RegisterAsync(RegisterUserDto dto);
         Task<UserResponseDto?> GetByIdAsync(Guid id);
+        Task<IEnumerable<UserResponseDto>> GetAllAsync();
     }
 }

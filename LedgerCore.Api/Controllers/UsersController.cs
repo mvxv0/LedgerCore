@@ -37,5 +37,12 @@ namespace LedgerCore.Api.Controllers
 
             return Ok(user);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<UserResponseDto>>> GetAll()
+        {
+            var users = await _userService.GetAllAsync();
+            return Ok(users);
+        }
     }
 }
