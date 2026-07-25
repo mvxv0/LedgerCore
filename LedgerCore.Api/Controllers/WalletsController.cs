@@ -1,4 +1,5 @@
 ﻿using LedgerCore.Application.DTOs;
+using LedgerCore.Application.Exceptions;
 using LedgerCore.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,24 @@ namespace LedgerCore.Api.Controllers
         {
             var wallets = await _walletService.GetByUserIdAsync(userId);
             return Ok(wallets);
+        }
+
+        [HttpPost("deposit")]
+        public async Task<ActionResult<TransactionResponseDto>> Deposit(DepositDto dto)
+        {
+            try
+            {
+                var result = await _walletService.DepositAsync(dto);
+                return Ok(result);
+            }
+            catch (WalletNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (InvalidAmountException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
     }
 }
